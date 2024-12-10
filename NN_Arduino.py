@@ -88,7 +88,6 @@ class ArduinoNeuralNetwork:
 
     def softmax_derivative(self,softmax_output):
         """
-        Computes the derivative of the softmax function for backpropagation.
         Args: softmax_output (numpy.ndarray): The output of the softmax function (batch_size, num_classes).
         Returns: numpy.ndarray: The gradient of the softmax output (same shape as softmax_output).
         """
@@ -352,8 +351,8 @@ def update_loss_graph(epoch, loss):
     max_epochs = num_epochs
 
     # Scale and position the new point
-    x = 40 + (450 / max_epochs) * epoch  # Adjust X scaling to fit within the new border
-    y = 190 - (170 * (loss - min_loss) / (max_loss - min_loss))  # Adjust Y scaling for padding
+    x = 40 + (450 / max_epochs) * epoch 
+    y = 190 - (170 * (loss - min_loss) / (max_loss - min_loss))  
     loss_points.append((x, y))
 
     # Draw the loss line
@@ -507,10 +506,10 @@ frame_buttons = ttk.Frame(root, padding="10")
 frame_buttons.grid(row=1, column=0, sticky="W")
 ttk.Button(frame_buttons, text="Train Neural Network", command=train_nn).grid(row=0, column=0, padx=5)
 
-# Add activation function selector
+# Activation function selector
 ttk.Label(frame_config, text="Activation Function:").grid(row=1, column=0, sticky="e")
-activation_functions = ["ReLU", "Sigmoid", "Tanh", "Softmax"]  # Add more as needed
-selected_activation = tk.StringVar(value="ReLU")  # Default value
+activation_functions = ["ReLU", "Sigmoid", "Tanh", "Softmax"] 
+selected_activation = tk.StringVar(value="ReLU")
 activation_dropdown = ttk.Combobox(frame_config, textvariable=selected_activation, values=activation_functions, state="readonly")
 activation_dropdown.grid(row=1, column=1)
 
